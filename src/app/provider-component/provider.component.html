@@ -1,0 +1,52 @@
+<div class="text-center"><h1>List Of Providers</h1></div>
+
+
+<table  class="table table-hover" style="width:100%">
+    <tr>
+        
+        <th>pseudo</th>
+        <th>location</th>
+        <th>domaine</th>
+        
+    </tr>
+    <tr *ngFor="let provider of providers "[class.selected]="provider == selectedProvider" (click)="onSelect(provider)" >
+     
+        <td> {{ provider.pseudo }} </td>
+        <td> {{ provider.location }} </td>
+        <td> {{ provider.domaine }} </td>
+        
+        
+    </tr>
+</table>
+<!-- Afficher les details de l'utilisateur selectionné -->
+
+<div class="text-center"> 
+  
+  <div *ngIf="selectedProvider">
+      <h2>{{selectedProvider.pseudo | uppercase}} Details</h2>
+     
+      <div>
+          <label>pseudo:
+            <input [(ngModel)]="selectedProvider.pseudo" placeholder="pseudo" class="form-control">
+          </label>
+        </div>
+      <div>
+        <label>location:
+          <input [(ngModel)]="selectedProvider.location" placeholder="location" class="form-control">
+        </label>
+      </div>
+      <div>
+          <label>domaine:
+            <input [(ngModel)]="selectedProvider.domaine" placeholder="domaine" class="form-control">
+          </label>
+        </div>
+        
+    </div>
+
+    <button (click)="putProvider()" class="btn btn-success" >
+      Update
+  </button>
+  <button (click)="deleteRefreshProvider(selectedProvider._id)" class="btn btn-danger">
+      Remove
+  </button>
+ </div> 

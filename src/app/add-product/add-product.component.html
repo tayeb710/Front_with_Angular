@@ -1,0 +1,63 @@
+<div class="row" class="panel-body">
+  <div class="col-sm-6">
+    <div class="text-center">
+      <h1>ADD Product</h1>
+    </div>
+
+    <form #myForm>
+      <div class="form-group">
+        <label for="refer">refer:</label>
+        <input type="text" [(ngModel)]='refer' class="form-control" id="refer" name="refer" #myRefer="ngModel" minlength="4" required
+          [value]="inputValue">
+        <div *ngIf="myRefer.errors?.required && myRefer.touched" class="alert alert-danger">
+          refer is required
+        </div>
+        <div *ngIf="myRefer.errors?.minlength && myRefer.touched" class="alert alert-danger">
+          min required 4 caracters
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="label">label:</label>
+        <input type="text" [(ngModel)]='label' class="form-control" id="label" name="label" #myLabel="ngModel" minlength="4" required
+          [value]="inputValue">
+        <div *ngIf="myLabel.errors?.required && myLabel.touched" class="alert alert-danger">
+          Label is required
+        </div>
+        <div *ngIf="myLabel.errors?.minlength && myLabel.touched" class="alert alert-danger">
+          min required 4 caracters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="text">Price</label>
+        <input type="text" [(ngModel)]='price' class="form-control" id="price" name="price" #myPrice="ngModel" minlength="1" required
+          [value]="inputValue">
+        <div *ngIf="myPrice.errors?.required && myPrice.touched" class="alert alert-danger">
+          price is required
+        </div>
+        <div *ngIf="myPrice.errors?.minlength && myPrice.touched" class="alert alert-danger">
+          min required 1 digit
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="text">quantity</label>
+        <input type="text" [(ngModel)]='quantity' class="form-control" id="quantity" name="quantity" #myQuantity="ngModel" minlength="1"
+          required [value]="inputValue">
+        <div *ngIf="myQuantity.errors?.required && myQuantity.touched" class="alert alert-danger">
+          quantity is required
+        </div>
+        <div *ngIf="myQuantity.errors?.minlength && myQuantity.touched" class="alert alert-danger">
+          min required 1 digit
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-success" (click)="addProduct(refer,label,price,quantity)">Add Product</button>
+      <button type="button" class="btn btn-danger" (mousedown)="Cancel()">Cancel</button>
+    </form>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,54 @@
+<div class="text-center"><h1>List Of Products</h1></div>
+
+
+<table  class="table table-hover" style="width:100%">
+    <tr>
+        
+        <th>refer</th>
+        <th>label</th>
+        <th>price</th>
+        <th>quantity</th>
+    </tr>
+    <tr *ngFor="let product of products "[class.selected]="product == selectedProduct" (click)="onSelect(product)" >
+     
+        <td> {{ product.refer }} </td>
+        <td> {{ product.label }} </td>
+        <td> {{ product.price }} </td>
+        <td> {{ product.quantity }} </td>
+        
+    </tr>
+</table>
+<!-- Afficher les details de l'utilisateur selectionné -->
+<div class="text-center"> 
+  <div *ngIf="selectedProduct">
+      <h2>{{selectedProduct.refer | uppercase}} Details</h2>
+     
+      <div>
+          <label>refer:
+            <input [(ngModel)]="selectedProduct.refer" placeholder="refer" class="form-control">
+          </label>
+        </div>
+      <div>
+        <label>label:
+          <input [(ngModel)]="selectedProduct.label" placeholder="label"class="form-control">
+        </label>
+      </div>
+      <div>
+          <label>price:
+            <input [(ngModel)]="selectedProduct.price" placeholder="price"class="form-control">
+          </label>
+        </div>
+        <div>
+        <label>quantity:
+          <input [(ngModel)]="selectedProduct.quantity" placeholder="quantity" class="form-control">
+        </label>
+      </div>
+    </div>
+
+    <button (click)="putProduct()" class="btn btn-success" >
+      Update
+  </button>
+  <button (click)="deleteRefreshProduct(selectedProduct._id)" class="btn btn-danger">
+      Remove
+  </button>
+</div>
